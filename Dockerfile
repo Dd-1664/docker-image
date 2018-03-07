@@ -1,6 +1,6 @@
 FROM debian:stable-slim
 
-LABEL maintainer = Dd-1664
+LABEL maintainer = injah
 
 #install node 8 + npm
 RUN apt-get update && apt-get install -y apt-transport-https lsb-release ca-certificates wget gnupg curl software-properties-common && \

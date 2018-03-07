@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 set -e
 cd /var/www/html
 
@@ -24,4 +23,5 @@ chmod -R 777 /var/www/html/var/logs
 
 
 # We are all set, run apache in foreground
+echo "run apache2"
 exec /usr/sbin/apache2ctl -D FOREGROUND

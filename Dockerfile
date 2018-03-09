@@ -17,7 +17,6 @@ RUN apt-get update && apt-get install -y \
     libxext6 \
     libxrender1 \
     make \
-    openssl \
     nodejs \
     php7.1 \
     php7.1-mysql \
@@ -50,7 +49,6 @@ RUN apt-get update && apt-get install -y \
 # Apache configuration
 RUN a2enmod rewrite headers ssl deflate expires
 COPY apache/vhost.conf /etc/apache2/sites-enabled/000-default.conf
-COPY apache/vhost-dev.conf /etc/apache2/sites-enabled/001-dev.conf
 COPY apache/deflate_gzip.conf /etc/apache2/mods-enabled/deflate_gzip.conf
 COPY apache/deflate_gzip.conf /etc/apache2/mods-available/deflate_gzip.conf
 

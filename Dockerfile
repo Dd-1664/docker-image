@@ -66,10 +66,10 @@ ENV COMPOSER_HOME /home/.composer
 
 # create TMP dir
 RUN mkdir -p /tmp/uploads/ && chmod +w -R /tmp/
-COPY docker/run-symfony.sh /var/www/run-symfony.sh
+COPY docker/run-symfony.Unix.sh /var/www/run-symfony.Unix.sh
 
 # CHMOD + APACHE at runtime
-RUN /bin/bash -c 'chmod +x /var/www/run-symfony.sh'
+RUN /bin/bash -c 'chmod +x /var/www/run-symfony.Unix.sh'
 
 # logs apache to stdout+stderror
 RUN ln -sf /dev/stdout /var/log/apache2/access.log && ln -sf /dev/stderr /var/log/apache2/error.log

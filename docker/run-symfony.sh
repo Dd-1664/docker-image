@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 set -xe
-#sed $'s/\r$//'
-
 cd /var/www/html
-
 
 # prepare chmod default values
 if [[ "$APACHE_USER_ID" -eq "" ]]; then

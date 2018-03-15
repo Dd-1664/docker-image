@@ -11,7 +11,7 @@ If error on Deploy:
 *- env: bash\r: No such file or directory -*
 
 Run this command to convert endline DOS to UNIX for bash files:
-`sed $'s/\r$//' ./script.sh > ./script.Unix.sh`
+`sed $'s/\r$//' ./run-symfony.sh > ./run-symfony.Unix.sh`
 
 
 <https://stackoverflow.com/questions/29045140/env-bash-r-no-such-file-or-directory>

@@ -14,10 +14,11 @@ if [[ "$APACHE_USER_ID" -ne "www-data" ]]; then
 fi
 
 # fix cache chmod
-mkdir -p app/cache && mkdir -p app/logs
+mkdir -p var/cache && mkdir -p var/logs
 chown -R $APACHE_USER_ID:$APACHE_USER_ID /var/www/html
-chmod -R 777 /var/www/html/app/cache
-chmod -R 777 /var/www/html/app/logs
+chmod -R 777 /var/www/html/var/cache
+chmod -R 777 /var/www/html/var/logs
+chmod -R 777 /var/www/html/vendor
 
 # We are all set, run apache in foreground
 exec /usr/sbin/apache2ctl -D FOREGROUND

@@ -64,9 +64,11 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin -
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /home/.composer
 
-# create TMP dir
-RUN mkdir -p /tmp/uploads/ && chmod +w -R /tmp/
+# copy Apache2 deploy script in docker
 COPY docker/run-symfony.Unix.sh /var/www/run-symfony.Unix.sh
+
+# environnent variable for script
+ENV APACHE_USER_ID 1000
 
 # CHMOD + APACHE at runtime
 RUN /bin/bash -c 'chmod +x /var/www/run-symfony.Unix.sh'

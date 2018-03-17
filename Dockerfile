@@ -71,6 +71,7 @@ COPY docker/run-symfony.Unix.sh /var/www/run-symfony.Unix.sh
 ENV APACHE_USER_ID 1000
 
 # CHMOD + APACHE at runtime
+RUN mkdir -p /tmp/uploads/ && chmod +w -R /tmp/
 RUN /bin/bash -c 'chmod +x /var/www/run-symfony.Unix.sh'
 
 # logs apache to stdout+stderror

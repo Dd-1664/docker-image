@@ -13,7 +13,7 @@ if [[ "$APACHE_USER_ID" -ne "www-data" ]]; then
     usermod -u $APACHE_USER_ID www-data
 
     echo "Disable opcache"
-sed -ie 's/opcache.enable=1/opcache.enable=0/g' /etc/php/7.1/apache2/conf.d/99-gm.ini
+sed -ie 's/opcache.enable=1/opcache.enable=0/g' /etc/php/7.1/apache2/conf.d/php.ini
 
 fi
 

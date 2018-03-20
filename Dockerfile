@@ -12,11 +12,6 @@ RUN apt-get update && apt-get install -y \
     acl \
     apache2 \
     git \
-    libicu-dev \
-    libx11-6 \
-    libxext6 \
-    libxrender1 \
-    make \
     nodejs \
     php7.1 \
     php7.1-mysql \
@@ -38,16 +33,12 @@ RUN apt-get update && apt-get install -y \
     libapache2-mod-php7.1 \
     ruby \
     ruby-dev \
-    xfonts-75dpi \
-    xfonts-base \
-    zlib1g-dev \
     pkg-config \
     build-essential \
     logrotate
 
 
 # Apache configuration
-RUN a2enmod rewrite headers ssl deflate expires
 COPY apache/vhost.conf /etc/apache2/sites-enabled/000-default.conf
 COPY apache/deflate_gzip.conf /etc/apache2/mods-enabled/deflate_gzip.conf
 COPY apache/deflate_gzip.conf /etc/apache2/mods-available/deflate_gzip.conf
@@ -65,14 +56,14 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /home/.composer
 
 # copy Apache2 deploy script in docker
-COPY docker/run-symfony.Unix.sh /var/www/run-symfony.Unix.sh
+COPY docker/run-symfony.Win.sh /var/www/run-symfony.Win.sh
 
 # environnent variable for script
 ENV APACHE_USER_ID 1000
 
 # CHMOD + APACHE at runtime
 RUN mkdir -p /tmp/uploads/ && chmod +w -R /tmp/
-RUN /bin/bash -c 'chmod +x /var/www/run-symfony.Unix.sh'
+RUN /bin/bash -c 'chmod +x /var/www/run-symfony.Win.sh'
 
 # logs apache to stdout+stderror
 RUN ln -sf /dev/stdout /var/log/apache2/access.log && ln -sf /dev/stderr /var/log/apache2/error.log

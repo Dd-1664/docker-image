@@ -55,14 +55,14 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /home/.composer
 
 # copy Apache2 deploy script in docker
-COPY docker/run-symfony.Win.sh /var/www/run-symfony.Win.sh
+COPY docker/run-symfony.Unix.sh /var/www/run-symfony.Unix.sh
 
 # environnent variable for script
 ENV APACHE_USER_ID 1000
 
 # CHMOD + APACHE at runtime
 RUN mkdir -p /tmp/uploads/ && chmod +w -R /tmp/
-RUN /bin/bash -c 'chmod +x /var/www/run-symfony.Win.sh'
+RUN /bin/bash -c 'chmod +x /var/www/run-symfony.Unix.sh'
 
 # logs apache to stdout+stderror
 RUN ln -sf /dev/stdout /var/log/apache2/access.log && ln -sf /dev/stderr /var/log/apache2/error.log

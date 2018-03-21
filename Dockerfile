@@ -37,7 +37,6 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     logrotate
 
-
 # Apache configuration
 COPY apache/vhost.conf /etc/apache2/sites-enabled/000-default.conf
 COPY apache/deflate_gzip.conf /etc/apache2/mods-enabled/deflate_gzip.conf
